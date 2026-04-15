@@ -33,9 +33,27 @@ heroku config:set NEXT_PUBLIC_APP_URL=https://<your-app>.herokuapp.com
 
 Optional: set `NODE_ENV=production` (Heroku does this automatically for Node apps).
 
-## Git
+## GitHub
 
-If `git init` did not complete in your environment, run it locally in this folder before your first commit.
+Remote: **https://github.com/bryanpeterson-hub/the-2-percent-advantage.git**
+
+An initial commit is already present locally. Publish it:
+
+```bash
+cd /Users/bryan.peterson/Projects/the-2-percent-advantage
+git push -u origin main
+```
+
+If HTTPS prompts for credentials in a headless environment, use either **GitHub CLI** (`gh auth login` then push again) or switch the remote to SSH:
+
+```bash
+git remote set-url origin git@github.com:bryanpeterson-hub/the-2-percent-advantage.git
+git push -u origin main
+```
+
+### Git directory layout (this checkout)
+
+Git metadata for this clone lives in a sibling folder **`../the-2-percent-advantage.git`** (see the `gitdir:` pointer in the `.git` file). That avoids environments that block creating `.git/hooks` inside the project directory. To use a normal in-project `.git` folder instead, run `git clone` into a fresh directory once push works, or consult Git’s `git worktree` / `git clone --separate-git-dir` docs.
 
 ### Build note
 
