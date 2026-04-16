@@ -13,7 +13,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { storyTemplates } from "@/lib/content/stories";
+import { stories } from "@/src/data/stories";
 
 export function CommandMenu({ onOpenSurgery }: { onOpenSurgery: () => void }) {
   const [open, setOpen] = React.useState(false);
@@ -67,10 +67,10 @@ export function CommandMenu({ onOpenSurgery }: { onOpenSurgery: () => void }) {
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Story Bank (quick open)">
-          {storyTemplates.map((s) => (
+          {stories.map((s) => (
             <CommandItem
               key={s.id}
-              value={`${s.title} ${s.tags.join(" ")}`}
+              value={`${s.title} ${s.cloud} ${s.storyLevel} ${s.objection} ${s.aiBaseline} ${s.humanWisdom} ${s.talkTrack}`}
               onSelect={() => runCommand(() => router.push(`/story-bank?q=${encodeURIComponent(s.title)}`))}
             >
               {s.title}

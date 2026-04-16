@@ -31,7 +31,7 @@ Suggested config var for absolute URLs in metadata (include `https://`; empty va
 heroku config:set NEXT_PUBLIC_APP_URL=https://<your-app>.herokuapp.com
 ```
 
-Optional override if the Readiness curriculum record moves (defaults are in `lib/site.ts`):
+Optional override if the ACT curriculum record moves (defaults are in `lib/site.ts`):
 
 ```bash
 heroku config:set NEXT_PUBLIC_READINESS_CURRICULUM_URL=https://readiness.my.site.com/...
@@ -71,7 +71,7 @@ The PWA plugin emits service worker assets into `public/` during production buil
 
 Mock data lives in:
 
-- `lib/content/stories.ts` — Story Bank templates
+- `src/data/stories.ts` — Story Bank source of truth (98% / 2% narratives + talk-tracks)
 - `lib/content/arena.ts` — next live session label + archive cards
 
 Replace with your real sources when ready.

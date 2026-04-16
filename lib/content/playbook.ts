@@ -1,6 +1,6 @@
 import { READINESS_CURRICULUM_URL } from "@/lib/site";
 
-/** Weekly spotlight copy; full curriculum opens in Readiness. */
+/** Weekly spotlight copy; full curriculum opens in ACT. */
 export const weeklyPlaybook = {
   moduleTitle: "Crafting the Narrative: From Features to Transformation",
   moduleSummary: "Structure stories for executive decisions—not screen tours.",

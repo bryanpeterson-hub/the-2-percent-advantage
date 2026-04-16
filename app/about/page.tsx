@@ -165,7 +165,7 @@ export default function AboutPage() {
         <GlassChrome>
           <div className="glass-chrome-inner flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
-              Continue in Readiness, trade talk-tracks in the Story Bank, and bring live deals to the Arena.
+              Continue in ACT, trade talk-tracks in the Story Bank, and bring live deals to the Arena.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               <Button variant="primary" asChild className="gap-2 shadow-glow">
@@ -183,7 +183,7 @@ export default function AboutPage() {
               <Button variant="outline" asChild className="gap-2 border-sf-blue/35 text-sf-blue hover:bg-sf-blue/10">
                 <a href={READINESS_CURRICULUM_URL} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
-                  Readiness course
+                  ACT course
                 </a>
               </Button>
             </div>

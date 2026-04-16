@@ -33,7 +33,7 @@ export function WeeklyPlaybookCard() {
           <Button type="button" variant="primary" size="lg" className="w-full gap-2 sm:w-auto" asChild>
             <a href={url} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-4 w-4" />
-              Open Playbook in Readiness
+              Open Playbook in ACT
             </a>
           </Button>
         </div>

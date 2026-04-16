@@ -16,7 +16,7 @@ export const faqItems: FaqItem[] = [
     id: "time",
     question: "What is the time commitment?",
     answer:
-      "We’ve optimized for the busy SE. 15–20 minutes of on-demand 'Playbook' videos per week, plus our weekly 'Pulse' sessions (alternating between Sprints and Labs). The Readiness curriculum is also designed so you can progress asynchronously between live touchpoints.",
+      "We’ve optimized for the busy SE. 15–20 minutes of on-demand 'Playbook' videos per week, plus our weekly 'Pulse' sessions (alternating between Sprints and Labs). The ACT curriculum is also designed so you can progress asynchronously between live touchpoints.",
   },
   {
     id: "clouds",

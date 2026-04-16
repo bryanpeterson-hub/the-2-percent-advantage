@@ -4,7 +4,7 @@ import { GlassChrome } from "@/components/glass-chrome";
 import { Button } from "@/components/ui/button";
 import { weeklyPlaybook } from "@/lib/content/playbook";
 
-/** Dashboard block: direct link to the official Readiness curriculum. */
+/** Dashboard block: direct link to the official ACT curriculum. */
 export function ReadinessPlaybookCta() {
   const url = weeklyPlaybook.curriculumUrl;
 
@@ -14,17 +14,17 @@ export function ReadinessPlaybookCta() {
         <div>
           <div className="mb-2 flex items-center gap-2 text-sf-blue">
             <BookMarked className="h-5 w-5" />
-            <span className="text-xs font-semibold uppercase tracking-subheader">Playbook (Readiness)</span>
+            <span className="text-xs font-semibold uppercase tracking-subheader">Playbook (ACT)</span>
           </div>
           <p className="text-lg font-semibold text-foreground">Official course curriculum</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Continue Storytelling for Impact in Readiness—modules, paths, and assigned learning in one place.
+            Continue Storytelling for Impact in ACT—modules, paths, and assigned learning in one place.
           </p>
         </div>
         <Button variant="primary" className="w-full gap-2 shadow-glow sm:w-auto" asChild>
           <a href={url} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="h-4 w-4" />
-            Open course in Readiness
+            Open course in ACT
           </a>
         </Button>
       </div>

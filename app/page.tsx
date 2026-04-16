@@ -10,6 +10,26 @@ import { WeeklyPlaybookCard } from "@/components/weekly-playbook-card";
 import { Button } from "@/components/ui/button";
 import { nextLiveSession } from "@/lib/content/arena";
 import { SLACK_CHANNEL_URL } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
+function OutlinedGlyphs({ text, className }: { text: string; className?: string }) {
+  return (
+    <span className={cn("inline-flex font-semibold", className)}>
+      {Array.from(text).map((ch, i) => (
+        <span key={`${i}-${ch}`} className="relative inline-block align-baseline">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-0 select-none text-transparent"
+            style={{ WebkitTextStroke: "1px rgb(255,255,255)" }}
+          >
+            {ch}
+          </span>
+          <span className="relative text-gradient-accent">{ch}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -22,14 +42,7 @@ export default function HomePage() {
             Competency Engine
           </div>
           <h1 className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            <span className="text-gradient-accent rounded-md border-[1px] border-white/90 px-1.5 py-0.5 shadow-[0_0_20px_-4px_rgba(255,255,255,0.3)]">
-              98%
-            </span>{" "}
-            is Information.{" "}
-            <span className="text-gradient-accent rounded-md border-[1px] border-white/90 px-1.5 py-0.5 shadow-[0_0_20px_-4px_rgba(255,255,255,0.3)]">
-              2%
-            </span>{" "}
-            is the Win.
+            <OutlinedGlyphs text="98%" /> is Information. <OutlinedGlyphs text="2%" /> is the Win.
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             Harness your wisdom, experience, and expertise to own the room.
@@ -115,7 +128,7 @@ export default function HomePage() {
               ),
             },
             {
-              id: "readiness",
+              id: "act-curriculum",
               className: "lg:col-span-6",
               children: <ReadinessPlaybookCta />,
             },

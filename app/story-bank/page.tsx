@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { StoryBankClient } from "./story-bank-client";
+import { StoryBank } from "@/components/story-bank";
 
 export default function StoryBankPage() {
   return (
@@ -12,7 +12,7 @@ export default function StoryBankPage() {
         </div>
       }
     >
-      <StoryBankClient />
+      <StoryBank />
     </Suspense>
   );
 }
