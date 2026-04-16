@@ -31,7 +31,7 @@ Suggested config var for absolute URLs in metadata (include `https://`; empty va
 heroku config:set NEXT_PUBLIC_APP_URL=https://<your-app>.herokuapp.com
 ```
 
-**Heroku runtime note:** After a successful build, Heroku **prunes `devDependencies`**. Anything imported from `next.config.ts` must live in **`dependencies`** (for example `@ducanh2912/next-pwa`), or `next start` will crash when it loads the config. The start script uses **`-H 0.0.0.0`** so the server accepts traffic from Heroku’s router.
+**Heroku runtime note:** After a successful build, Heroku **prunes `devDependencies`**. `next start` still loads your Next config from disk: **`next.config.ts` requires the `typescript` package at runtime**, so it will crash after prune unless you move `typescript` to `dependencies` or use a **JS config** instead. This repo uses **`next.config.mjs`** so production boot does not need TypeScript. Anything the config imports (for example `@ducanh2912/next-pwa`) must still be in **`dependencies`** if it was previously under `devDependencies`. The start script uses **`-H 0.0.0.0`** so the server accepts traffic from Heroku’s router.
 
 Optional: set `NODE_ENV=production` (Heroku does this automatically for Node apps).
 
