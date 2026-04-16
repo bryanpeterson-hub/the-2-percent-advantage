@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, CircleHelp, FileText, LayoutDashboard, Swords } from "lucide-react";
+import { BookOpen, CircleHelp, FileText, LayoutDashboard, MessageSquare, Swords } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { SLACK_CHANNEL_URL } from "@/lib/site";
 
 const nav = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -63,9 +65,22 @@ export function GlassSidebar({ className }: { className?: string }) {
         </Link>
       </nav>
       <Separator className="my-6 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <p className="mt-auto px-1 text-xs leading-relaxed text-muted-foreground">
-        For internal Salesforce use only. Slack channel and contacts can be added here when ready.
-      </p>
+      <div className="mt-auto space-y-3 px-1">
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full justify-center gap-2 border-sf-teal/40 text-sf-teal hover:bg-sf-teal/10"
+          asChild
+        >
+          <a href={SLACK_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+            <MessageSquare className="h-4 w-4" />
+            Slack channel
+          </a>
+        </Button>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          For internal Salesforce use only. Questions and materials live in Slack.
+        </p>
+      </div>
     </aside>
   );
 }

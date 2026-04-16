@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { MessageSquare } from "lucide-react";
 
 import { faqItems } from "@/lib/content/faq";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { GlassChrome } from "@/components/glass-chrome";
+import { Button } from "@/components/ui/button";
+import { SLACK_CHANNEL_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -28,6 +32,23 @@ export default function FaqPage() {
           </AccordionItem>
         ))}
       </Accordion>
+
+      <GlassChrome>
+        <div className="glass-chrome-inner flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+          <div className="flex-1 space-y-1">
+            <p className="text-sm font-semibold text-foreground">Still stuck?</p>
+            <p className="text-sm text-muted-foreground">
+              Jump into the cohort Slack—fast answers, links, and peer examples.
+            </p>
+          </div>
+          <Button variant="primary" className="shrink-0 gap-2 shadow-glow" asChild>
+            <a href={SLACK_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+              <MessageSquare className="h-4 w-4" />
+              Open Slack
+            </a>
+          </Button>
+        </div>
+      </GlassChrome>
     </div>
   );
 }

@@ -1,22 +1,17 @@
 import Link from "next/link";
-import { Award, BookOpen, Sparkles } from "lucide-react";
+import { BookOpen, MessageSquare, Sparkles } from "lucide-react";
 
 import { ArenaCountdown } from "@/components/arena-countdown";
 import { BentoGrid } from "@/components/bento-grid";
 import { GlassChrome } from "@/components/glass-chrome";
+import { ReadinessPlaybookCta } from "@/components/readiness-playbook-cta";
 import { WisdomToggle } from "@/components/wisdom-toggle";
 import { WeeklyPlaybookCard } from "@/components/weekly-playbook-card";
 import { Button } from "@/components/ui/button";
-import { competencyBadges } from "@/lib/content/competency";
 import { nextLiveSession } from "@/lib/content/arena";
-
-const lessonHref = process.env.NEXT_PUBLIC_PLAYBOOK_LESSON_URL ?? "";
+import { SLACK_CHANNEL_URL } from "@/lib/site";
 
 export default function HomePage() {
-  const earned = competencyBadges.filter((b) => b.earned).length;
-  const total = competencyBadges.length;
-  const pct = Math.round((earned / total) * 100);
-
   return (
     <div className="space-y-12 md:space-y-16">
       {/* Hero */}
@@ -27,12 +22,27 @@ export default function HomePage() {
             Competency Engine
           </div>
           <h1 className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            <span className="text-gradient-accent">98%</span> is Information.{" "}
-            <span className="text-gradient-accent">2%</span> is the Win.
+            <span className="text-gradient-accent rounded-md border-[1px] border-white/90 px-1.5 py-0.5 shadow-[0_0_20px_-4px_rgba(255,255,255,0.3)]">
+              98%
+            </span>{" "}
+            is Information.{" "}
+            <span className="text-gradient-accent rounded-md border-[1px] border-white/90 px-1.5 py-0.5 shadow-[0_0_20px_-4px_rgba(255,255,255,0.3)]">
+              2%
+            </span>{" "}
+            is the Win.
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             Harness your wisdom, experience, and expertise to own the room.
           </p>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <Button variant="outline" size="sm" className="gap-2 border-sf-teal/40 text-sf-teal hover:bg-sf-teal/10" asChild>
+              <a href={SLACK_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                <MessageSquare className="h-4 w-4" />
+                Join Slack
+              </a>
+            </Button>
+            <span className="text-xs text-muted-foreground">Cohort questions, wins, and nudges—#2% Advantage</span>
+          </div>
         </div>
       </GlassChrome>
 
@@ -49,7 +59,7 @@ export default function HomePage() {
         <WisdomToggle />
       </section>
 
-      {/* Bento competency dashboard */}
+      {/* Bento */}
       <section className="space-y-5">
         <h2 className="px-1 text-xl font-semibold tracking-tight text-foreground md:text-2xl">Command deck</h2>
         <BentoGrid
@@ -59,7 +69,7 @@ export default function HomePage() {
               id: "playbook",
               colSpan: 2,
               rowSpan: 2,
-              children: <WeeklyPlaybookCard lessonHref={lessonHref} />,
+              children: <WeeklyPlaybookCard />,
             },
             {
               id: "arena",
@@ -105,49 +115,9 @@ export default function HomePage() {
               ),
             },
             {
-              id: "competency",
+              id: "readiness",
               className: "lg:col-span-6",
-              children: (
-                <GlassChrome className="h-full border-sf-teal/15">
-                  <div className="glass-chrome-inner !flex !h-full !min-h-[200px] !flex-col !gap-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2 text-sf-teal">
-                        <Award className="h-5 w-5" />
-                        <span className="text-xs font-semibold uppercase tracking-subheader">Your competency</span>
-                      </div>
-                      <span className="text-sm font-mono text-muted-foreground">
-                        {earned}/{total}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="mb-2 h-2 overflow-hidden rounded-full bg-white/10">
-                        <div
-                          className="h-full rounded-full bg-sf-teal shadow-glow-teal transition-all duration-700"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-muted-foreground">Teal bar tracks badge completion.</p>
-                    </div>
-                    <ul className="space-y-2">
-                      {competencyBadges.map((b) => (
-                        <li
-                          key={b.id}
-                          className={`flex items-center justify-between rounded-lg border px-3 py-2 text-sm ${
-                            b.earned
-                              ? "border-sf-teal/40 bg-sf-teal/10 text-foreground"
-                              : "border-white/10 text-muted-foreground"
-                          }`}
-                        >
-                          <span className="font-medium">{b.label}</span>
-                          <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                            {b.earned ? "Earned" : "Locked"}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </GlassChrome>
-              ),
+              children: <ReadinessPlaybookCta />,
             },
           ]}
         />

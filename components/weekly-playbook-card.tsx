@@ -1,22 +1,13 @@
 "use client";
 
-import { PlayCircle } from "lucide-react";
-import { toast } from "sonner";
+import { ExternalLink, PlayCircle } from "lucide-react";
 
 import { GlassChrome } from "@/components/glass-chrome";
 import { Button } from "@/components/ui/button";
 import { weeklyPlaybook } from "@/lib/content/playbook";
 
-export function WeeklyPlaybookCard({ lessonHref }: { lessonHref: string }) {
-  const start = () => {
-    if (lessonHref) {
-      window.open(lessonHref, "_blank", "noopener,noreferrer");
-      return;
-    }
-    toast.message("Connect your LMS", {
-      description: "Set NEXT_PUBLIC_PLAYBOOK_LESSON_URL on Heroku to deep-link the weekly module.",
-    });
-  };
+export function WeeklyPlaybookCard() {
+  const url = weeklyPlaybook.curriculumUrl;
 
   return (
     <GlassChrome className="h-full shadow-glow">
@@ -39,9 +30,11 @@ export function WeeklyPlaybookCard({ lessonHref }: { lessonHref: string }) {
           </div>
         </div>
         <div className="mt-auto">
-          <Button type="button" variant="primary" size="lg" className="w-full gap-2 sm:w-auto" onClick={start}>
-            <PlayCircle className="h-5 w-5" />
-            Start lesson
+          <Button type="button" variant="primary" size="lg" className="w-full gap-2 sm:w-auto" asChild>
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4" />
+              Open Playbook in Readiness
+            </a>
           </Button>
         </div>
       </div>

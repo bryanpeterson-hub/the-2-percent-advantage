@@ -31,10 +31,10 @@ Suggested config var for absolute URLs in metadata (include `https://`; empty va
 heroku config:set NEXT_PUBLIC_APP_URL=https://<your-app>.herokuapp.com
 ```
 
-Optional deep-link for the dashboard **Start lesson** button (Weekly Playbook card):
+Optional override if the Readiness curriculum record moves (defaults are in `lib/site.ts`):
 
 ```bash
-heroku config:set NEXT_PUBLIC_PLAYBOOK_LESSON_URL=https://your-lms-or-video-url
+heroku config:set NEXT_PUBLIC_READINESS_CURRICULUM_URL=https://readiness.my.site.com/...
 ```
 
 **Heroku runtime note:** After a successful build, Heroku **prunes `devDependencies`**. `next start` still loads your Next config from disk: **`next.config.ts` requires the `typescript` package at runtime**, so it will crash after prune unless you move `typescript` to `dependencies` or use a **JS config** instead. This repo uses **`next.config.mjs`** so production boot does not need TypeScript. Anything the config imports (for example `@ducanh2912/next-pwa`) must still be in **`dependencies`** if it was previously under `devDependencies`. The start script uses **`-H 0.0.0.0`** so the server accepts traffic from Heroku’s router.
