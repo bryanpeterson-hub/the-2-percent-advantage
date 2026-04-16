@@ -7,14 +7,14 @@ import { GlassChrome } from "@/components/glass-chrome";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+
+const filterSelectClass =
+  "flex h-9 w-full cursor-pointer appearance-none rounded-md border border-white/15 bg-black/25 bg-[length:1rem] bg-[right_0.5rem_center] bg-no-repeat px-3 py-1 pr-9 text-sm text-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sf-blue/45 disabled:cursor-not-allowed disabled:opacity-50 [&>option]:bg-card [&>option]:text-foreground";
+
+const filterSelectChevron = {
+  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
+} as const;
 import {
   stories,
   storyClouds,
@@ -141,58 +141,61 @@ export function StoryBank() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label className="text-xs uppercase tracking-subheader">Cloud</Label>
-            <Select
+            <Label htmlFor="story-filter-cloud" className="text-xs uppercase tracking-subheader">
+              Cloud
+            </Label>
+            <select
+              id="story-filter-cloud"
               value={cloudFilter}
-              onValueChange={(v) => setCloudFilter(v as StoryCloud | "all")}
+              onChange={(e) => setCloudFilter(e.target.value as StoryCloud | "all")}
+              className={filterSelectClass}
+              style={filterSelectChevron}
             >
-              <SelectTrigger className="border-white/15 bg-black/25">
-                <SelectValue placeholder="All clouds" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All clouds</SelectItem>
-                {storyClouds.map((c) => (
-                  <SelectItem key={c} value={c}>
-                    {c}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <option value="all">All clouds</option>
+              {storyClouds.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="space-y-2">
-            <Label className="text-xs uppercase tracking-subheader">Story level</Label>
-            <Select
+            <Label htmlFor="story-filter-level" className="text-xs uppercase tracking-subheader">
+              Story level
+            </Label>
+            <select
+              id="story-filter-level"
               value={levelFilter}
-              onValueChange={(v) => setLevelFilter(v as StoryLevel | "all")}
+              onChange={(e) => setLevelFilter(e.target.value as StoryLevel | "all")}
+              className={filterSelectClass}
+              style={filterSelectChevron}
             >
-              <SelectTrigger className="border-white/15 bg-black/25">
-                <SelectValue placeholder="All levels" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All levels</SelectItem>
-                {storyLevels.map((l) => (
-                  <SelectItem key={l} value={l}>
-                    {l}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <option value="all">All levels</option>
+              {storyLevels.map((l) => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="space-y-2">
-            <Label className="text-xs uppercase tracking-subheader">Objection</Label>
-            <Select value={objectionFilter} onValueChange={setObjectionFilter}>
-              <SelectTrigger className="border-white/15 bg-black/25">
-                <SelectValue placeholder="All objections" />
-              </SelectTrigger>
-              <SelectContent className="max-h-64">
-                <SelectItem value="all">All objections</SelectItem>
-                {objections.map((o) => (
-                  <SelectItem key={o} value={o} className="whitespace-normal">
-                    {o}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Label htmlFor="story-filter-objection" className="text-xs uppercase tracking-subheader">
+              Objection
+            </Label>
+            <select
+              id="story-filter-objection"
+              value={objectionFilter}
+              onChange={(e) => setObjectionFilter(e.target.value)}
+              className={filterSelectClass}
+              style={filterSelectChevron}
+            >
+              <option value="all">All objections</option>
+              {objections.map((o) => (
+                <option key={o} value={o} title={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <p className="text-xs text-muted-foreground">
