@@ -25,11 +25,13 @@ Visit `http://localhost:3000`. Press **⌘K** (macOS) or **Ctrl+K** (Windows/Lin
 3. Deploy this repository.
 4. Heroku sets `PORT`; `npm run start` uses `next start -p ${PORT:-3000}`.
 
-Suggested config var for absolute URLs in metadata:
+Suggested config var for absolute URLs in metadata (include `https://`; empty values are ignored so the app does not crash on `new URL`):
 
 ```bash
 heroku config:set NEXT_PUBLIC_APP_URL=https://<your-app>.herokuapp.com
 ```
+
+**Heroku runtime note:** After a successful build, Heroku **prunes `devDependencies`**. Anything imported from `next.config.ts` must live in **`dependencies`** (for example `@ducanh2912/next-pwa`), or `next start` will crash when it loads the config. The start script uses **`-H 0.0.0.0`** so the server accepts traffic from Heroku’s router.
 
 Optional: set `NODE_ENV=production` (Heroku does this automatically for Node apps).
 
