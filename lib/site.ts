@@ -4,3 +4,7 @@ export const READINESS_CURRICULUM_URL =
 
 export const SLACK_CHANNEL_URL =
   "https://salesforce.enterprise.slack.com/archives/C083KSZFHPF" as const;
+
+/** Gemini Gem (or equivalent) for the Master Coach narrative partner. */
+export const MASTER_COACH_GEM_URL =
+  process.env.NEXT_PUBLIC_MASTER_COACH_GEM_URL ?? "https://gemini.google.com/app";
