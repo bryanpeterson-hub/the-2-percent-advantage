@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
+import { Stethoscope } from "lucide-react";
 
 import {
   CommandDialog,
@@ -14,7 +15,7 @@ import {
 } from "@/components/ui/command";
 import { storyTemplates } from "@/lib/content/stories";
 
-export function CommandMenu() {
+export function CommandMenu({ onOpenSurgery }: { onOpenSurgery: () => void }) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
 
@@ -22,7 +23,7 @@ export function CommandMenu() {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen((o) => !o);
       }
     };
     document.addEventListener("keydown", down);
@@ -42,15 +43,27 @@ export function CommandMenu() {
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Search hub or story titles…" />
+      <CommandInput placeholder="Search hub, routes, or story titles…" />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigate">
           <CommandItem onSelect={() => runCommand(() => router.push("/"))}>Dashboard</CommandItem>
-          <CommandItem onSelect={() => runCommand(() => router.push("/story-bank"))}>
-            Story Bank
-          </CommandItem>
+          <CommandItem onSelect={() => runCommand(() => router.push("/story-bank"))}>Story Bank</CommandItem>
           <CommandItem onSelect={() => runCommand(() => router.push("/arena"))}>Arena</CommandItem>
+          <CommandItem onSelect={() => runCommand(() => router.push("/about"))}>About — The manifesto</CommandItem>
+          <CommandItem onSelect={() => runCommand(() => router.push("/faq"))}>FAQ — Tactical clarity</CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Actions">
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
+              window.setTimeout(() => onOpenSurgery(), 0);
+            }}
+          >
+            <Stethoscope className="mr-2 h-4 w-4 text-sf-blue" />
+            Submit for surgery (2% Lab intake)
+          </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Story Bank (quick open)">

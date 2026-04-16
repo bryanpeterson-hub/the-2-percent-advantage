@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { toast } from "sonner";
-import { Archive, Send } from "lucide-react";
+import { Archive, Send, Stethoscope } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,14 +28,23 @@ export default function ArenaPage() {
 
   return (
     <div className="space-y-10">
-      <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-subheader text-muted-foreground">
-          Live session hub
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">The Arena</h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Minimal intake for deal surgery—what matters is the decision, the doubt, and the next proof step.
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-subheader text-sf-yellow">Live session hub</p>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">The Arena</h1>
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Minimal intake for deal surgery—what matters is the decision, the doubt, and the next proof step.
+          </p>
+        </div>
+        <Button
+          type="button"
+          variant="primary"
+          className="w-full shrink-0 gap-2 shadow-glow sm:w-auto"
+          onClick={() => window.dispatchEvent(new Event("two-percent:open-surgery-modal"))}
+        >
+          <Stethoscope className="h-4 w-4" />
+          Submit for surgery
+        </Button>
       </div>
 
       <Card className="glass-panel border-white/10">

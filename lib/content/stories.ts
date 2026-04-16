@@ -1,4 +1,4 @@
-export type Cloud = "Sales" | "Service" | "Marketing" | "Data";
+export type Cloud = "Marketing" | "Sales" | "Service" | "Data" | "AI";
 export type Industry =
   | "Financial Services"
   | "Healthcare"
@@ -78,5 +78,16 @@ export const storyTemplates: StoryTemplate[] = [
     industry: "Public Sector",
     objection: "Timing",
     tags: ["procurement", "champion"],
+  },
+  {
+    id: "s6",
+    title: "Agentforce without the sci-fi pitch",
+    summary: "Ground AI in governed actions and measurable outcomes.",
+    talkTrack:
+      "Start with the job the agent does on Tuesday: deflect tier-1, draft follow-ups, or surface next-best-action—then show the guardrails: permissions, audit, human handoff. One customer metric beats five feature bullets.",
+    cloud: "AI",
+    industry: "Financial Services",
+    objection: "Trust",
+    tags: ["ai", "governance"],
   },
 ];

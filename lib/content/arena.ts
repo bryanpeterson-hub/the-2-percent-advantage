@@ -31,4 +31,6 @@ export const nextLiveSession = {
   datetime: "2026-04-18T16:00:00",
   timezone: "PT",
   location: "Internal calendar (add link when ready)",
+  /** When true, Arena card shows “Live now” styling (high-priority Lab). */
+  isLiveNow: false,
 };
