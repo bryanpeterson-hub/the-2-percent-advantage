@@ -33,19 +33,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <div className="flex min-h-screen flex-1 flex-col">
-            <header className="glass-panel sticky top-0 z-20 flex items-center justify-between gap-2 border-x-0 border-t-0 px-3 py-3 md:hidden">
+            <header className="glass-panel sticky top-0 z-20 flex min-h-[3.25rem] items-center justify-between gap-3 border-x-0 border-t-0 px-4 py-3.5 md:hidden">
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Open menu">
+                <Button variant="ghost" size="icon" className="size-11 shrink-0 touch-manipulation" aria-label="Open menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <Link href="/" className="text-sm font-semibold tracking-tight">
+              <Link href="/" className="min-w-0 truncate text-center text-sm font-semibold tracking-tight">
                 2% Advantage
               </Link>
-              <div className="flex items-center gap-1">
+              <div className="flex shrink-0 items-center gap-2">
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="size-11 touch-manipulation"
                   aria-label="Open search"
                   onClick={() => window.dispatchEvent(new Event("two-percent:open-command-palette"))}
                 >
@@ -54,11 +55,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <Button
                   variant="primary"
                   size="icon"
-                  className="shrink-0 shadow-glow"
+                  className="size-11 shrink-0 touch-manipulation shadow-glow"
                   aria-label="Submit for surgery"
                   onClick={() => setSurgeryOpen(true)}
                 >
-                  <Stethoscope className="h-4 w-4" />
+                  <Stethoscope className="h-5 w-5" />
                 </Button>
               </div>
             </header>

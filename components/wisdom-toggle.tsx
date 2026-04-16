@@ -47,38 +47,44 @@ export function WisdomToggle() {
               <p className="text-xs font-semibold uppercase tracking-subheader text-sf-teal">
                 The Human Edge
               </p>
-              <span className="rounded-full border border-sf-teal/40 bg-sf-teal/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sf-teal">
+              <span className="rounded-full border border-sf-blue/45 bg-sf-blue/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sf-blue">
                 2% pass
               </span>
             </div>
             <p className="text-sm font-medium leading-relaxed text-foreground">
               Meet Sarah—she’s defending last quarter’s spend while her CMO asks for “more pipeline, fewer
               surprises.” The real risk isn’t tools; it’s credibility in the{" "}
-              <mark className="rounded bg-sf-yellow/25 px-1 py-0.5 text-foreground ring-1 ring-sf-yellow/50">
+              <mark className="rounded bg-sf-blue/20 px-1 py-0.5 font-semibold text-sf-blue ring-1 ring-sf-blue/50">
                 Monday forecast
               </mark>
               . Here’s how a peer in retail cut time-to-insight by 40%—with governance her security team could
               repeat in one slide.
             </p>
-            <ul className="space-y-2 text-xs text-muted-foreground">
-              <li className="flex gap-2">
-                <span className="text-sf-blue">●</span>
-                <span>
-                  <strong className="text-foreground">Customer callback:</strong> a peer proof point buyers
-                  recognize.
+            <ul className="space-y-3 text-xs leading-relaxed">
+              <li className="flex gap-2.5">
+                <span className="mt-0.5 shrink-0 text-sf-blue" aria-hidden>
+                  ●
+                </span>
+                <span className="text-sf-blue/90">
+                  <strong className="font-semibold text-sf-blue">Customer callback:</strong> a peer proof point
+                  buyers recognize.
                 </span>
               </li>
-              <li className="flex gap-2">
-                <span className="text-sf-violet">●</span>
-                <span>
-                  <strong className="text-foreground">Emotional hook:</strong> fear of losing the room in the
-                  exec readout.
+              <li className="flex gap-2.5">
+                <span className="mt-0.5 shrink-0 text-sf-blue" aria-hidden>
+                  ●
+                </span>
+                <span className="text-sf-blue/90">
+                  <strong className="font-semibold text-sf-blue">Emotional hook:</strong> fear of losing the room in
+                  the exec readout.
                 </span>
               </li>
-              <li className="flex gap-2">
-                <span className="text-sf-teal">●</span>
-                <span>
-                  <strong className="text-foreground">Tactical expertise:</strong> one-slide governance story
+              <li className="flex gap-2.5">
+                <span className="mt-0.5 shrink-0 text-sf-blue" aria-hidden>
+                  ●
+                </span>
+                <span className="text-sf-blue/90">
+                  <strong className="font-semibold text-sf-blue">Proof point:</strong> one-slide governance story
                   they can forward.
                 </span>
               </li>
